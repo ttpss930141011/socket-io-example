@@ -1,0 +1,21 @@
+{
+  "compilerOptions": {
+    "target": "ES2018", // 打包後要支援到的 ECMAScript 版本
+
+    // 如果沒設定會套用預設值（TS 自動判斷）
+    // 有「機會」導致 src 的資料夾也一起被 build 到 dist 資料夾中
+    // 例如 TS 自動把 rootDir 判斷為 { "rootDir": "." }
+    "rootDir": "src",
+
+    // 預設 tsc 會直接把編譯好的 js 檔放在與 ts 檔相同的路徑，但這樣檔案會很散亂，因此全部放到 dist
+    "outDir": "dist",
+
+    "stripInternal": true, // 針對加上 @internal 的方法不會產生對應的 Type Declaration 檔（例如針對測試寫的函式）
+    "types": [], // 在編譯時要一起包含的 declaration 檔
+
+    /* 下面這兩個項目之所以關閉，是因為一但開啟，其他使用本套件的開發者也需要被迫開啟 */
+    "esModuleInterop": false,
+    "skipLibCheck": false
+  },
+  "include": ["src"]
+}
